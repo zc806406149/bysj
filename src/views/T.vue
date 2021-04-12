@@ -11,7 +11,7 @@
                 </div>
             </div>
             <div class="lower-container">
-                <div class="slider-container" :style="sliderStyle">
+                <div class="slider-container"  :style="sliderStyle">
                     <svg width="200" height="50" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M74.3132 0 C47.0043 2.44032e-05 50.175 30 7.9179 30H144.27C99.4571 30 101.622 -2.44032e-05 74.3132 0Z" transform="translate(-7.38794 0.5)" fill="#12132C"/>
                     </svg>
@@ -26,8 +26,8 @@
 <script>
     import { TweenLite } from 'gsap'
     const coldGradient = {
-        start: '#5564c2',
-        end: '#3a2e8d'
+        start: '#666699',
+        end: '#000099'
     }
     const hotGradient = {
         start: '#f0ae4b',
@@ -38,8 +38,9 @@
         data(){
             return{
                 temperatureGrades: [0, 5, 10, 15, 20, 25, 30, 35],
-                currentTemperature:10,
-                sliderX: -310,
+                currentTemperature:20,
+                sliderX0: -310,
+                sliderX:0,
                 gradientStart: coldGradient.start,
                 gradientEnd: coldGradient.end}
         },
@@ -50,27 +51,30 @@
         },
         computed: {
             sliderStyle () {
-                this.mouseMoving()
+                this.sliderMoving();
                 return `transform: translate3d(${ this.sliderX}px, 0, 0);`
             },
             bgStyle () {
+                this.bian();
                 return `background: linear-gradient(to bottom right, ${this.gradientStart}, ${this.gradientEnd});`
             },
         },
         methods: {
-            mouseMoving () {
-                this.sliderX = this.sliderX+(this.currentTemperature*14)
-                    let targetGradient = coldGradient
-                    if (this.currentTemperature >= 25)         {
-                        targetGradient = hotGradient
-                    }
-                    if (this.gradientStart !== targetGradient.start) {
-                        TweenLite.to(this, 0.7, {
-                            'gradientStart': targetGradient.start,
-                            'gradientEnd': targetGradient.end,
+            sliderMoving () {
+                this.sliderX = this.sliderX0+(this.currentTemperature*14)
+            },
+            bian(){
+                let targetGradient = hotGradient
+                if (this.currentTemperature <= 25)         {
+                    targetGradient = coldGradient
+                }
 
-                        })
-                    }
+                    TweenLite.to(this, 0.5, {
+                        'gradientStart': targetGradient.start,
+                        'gradientEnd': targetGradient.end,
+
+                    })
+
             },
             tempElementStyle (tempNumber) {
                 const nearDistance = 3
@@ -97,6 +101,7 @@
         background-color: #12132C;
     }
     .temperature-text {
+        color: #fff;
         position: absolute;
         top:25%;
         left: 50%;

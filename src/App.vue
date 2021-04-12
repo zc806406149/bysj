@@ -1,11 +1,11 @@
 <template>
   <div id="app">
     <div id="nav">
-      <router-link to="/">Home</router-link> |
+      <router-link to="/">主页</router-link> |
+      <router-link to="/T">温度</router-link> |
+      <router-link to="/H">湿度</router-link> |
       <router-link to="/PM2.5">PM2.5</router-link> |
-      <router-link to="/CO2">CO2</router-link> |
-      <router-link to="/H">Humidity</router-link> |
-      <router-link to="/T">Temperature</router-link>
+      <router-link to="/CO2">CO2</router-link>
     </div>
     <router-view/>
   </div>
@@ -26,8 +26,10 @@
 #nav {
   padding: 10px 0 0 30px;
   float: left;
+  z-index: 100;
 }
 #nav a {
+  text-decoration:none;
   font-weight: bold;
   color: #2c3e50;
 }

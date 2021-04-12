@@ -25,6 +25,7 @@
 
 <style>
   #home{
+    z-index: 10;
     background: url("../assets/background_home.jpg");
     background-size: cover;
     width: 100%;
