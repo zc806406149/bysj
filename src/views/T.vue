@@ -38,7 +38,7 @@
         data(){
             return{
                 temperatureGrades: [0, 5, 10, 15, 20, 25, 30, 35],
-                currentTemperature:20,
+                currentTemperature:30,
                 sliderX0: -310,
                 sliderX:0,
                 gradientStart: coldGradient.start,
@@ -65,11 +65,11 @@
             },
             bian(){
                 let targetGradient = hotGradient
-                if (this.currentTemperature <= 25)         {
+                if (this.currentTemperature < 25)         {
                     targetGradient = coldGradient
                 }
 
-                    TweenLite.to(this, 0.5, {
+                    TweenLite.to(this, 2, {
                         'gradientStart': targetGradient.start,
                         'gradientEnd': targetGradient.end,
 

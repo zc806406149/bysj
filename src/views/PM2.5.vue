@@ -32,7 +32,7 @@
     name: "pm25",
     data() {
       return {
-        PM:111,
+        PM:660,
       }
     },
     methods:{

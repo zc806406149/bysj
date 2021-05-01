@@ -2,8 +2,8 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Home from '../views/Home.vue'
 import VueParticles from 'vue-particles'
-
-
+import Echarts from 'echarts'
+Vue.prototype.$echarts = Echarts;
 Vue.use(VueParticles)
 Vue.use(VueRouter)
 
@@ -32,7 +32,7 @@ const routes = [
     path: '/H',
     name: 'H',
     component: () => import(/* webpackChunkName: "about" */ '../views/H.vue')
-  }
+  },
 ]
 
 const router = new VueRouter({

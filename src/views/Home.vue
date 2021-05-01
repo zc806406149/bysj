@@ -16,7 +16,7 @@
       return {
         Temperature:25,
         Humidity:25,
-        PM25:320,
+        PM25:120,
         CO2:123
       }
     },
